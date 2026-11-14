@@ -10,6 +10,24 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* 抽籤：搖籤筒、籤支彈出、籤紙浮現 */
+  --animate-shake: shake 0.18s ease-in-out infinite;
+  --animate-stick-out: stick-out 0.6s ease-out forwards;
+  --animate-reveal: reveal 0.5s ease-out both;
+
+  @keyframes shake {
+    0%, 100% { transform: rotate(-10deg) translateY(0); }
+    50% { transform: rotate(10deg) translateY(-6px); }
+  }
+  @keyframes stick-out {
+    from { transform: translateY(0); }
+    to { transform: translateY(-70px) rotate(8deg); }
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(16px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +40,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
 }
